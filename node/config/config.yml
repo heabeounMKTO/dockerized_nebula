@@ -1,0 +1,19 @@
+pki:
+  ca: /config/ca.crt
+  cert: /config/hbdesk.crt
+  key: /config/hbdesk.key
+
+static_host_map:
+  "192.168.100.1": [""] # replace with your public ip and port
+
+lighthouse:
+  am_lighthouse: false
+  hosts: ["192.168.100.1"]
+
+punchy:
+  punch: true 
+  respond: true
+
+firewall:
+  outbound: [{port: any, proto: any, host: any}]
+  inbound: [{port: any, proto: any, host: any}]

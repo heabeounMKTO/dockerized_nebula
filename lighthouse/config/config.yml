@@ -1,0 +1,13 @@
+pki:
+  ca: /config/ca.crt
+  cert: /config/sb-lighthouse.crt
+  key: /config/sb-lighthouse.key
+static_host_map: {}
+lighthouse:
+  am_lighthouse: true
+listen:
+  host: 0.0.0.0
+  port: 4242
+firewall:
+  outbound: [{port: any, proto: any, host: any}]
+  inbound: [{port: any, proto: any, host: any}] # You can restrict this later
