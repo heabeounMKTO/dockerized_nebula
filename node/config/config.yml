@@ -4,16 +4,35 @@ pki:
   key: /config/hbdesk.key
 
 static_host_map:
-  "192.168.100.1": [""] # replace with your public ip and port
+  "192.168.100.1": [""]
 
 lighthouse:
   am_lighthouse: false
   hosts: ["192.168.100.1"]
+  # tailscale fix 
+  local_allow_list:
+    interfaces:
+      'tailscale.*': false
+      'docker.*': false
+      'veth.*': false
+    '0.0.0.0/0': true
+
+remote_allow_list:
+  "0.0.0.0/0": true
+  "::/0": false
+
+listen:
+  host: 0.0.0.0
+  port: 4242
+
+hostmap:
+  preferred_ranges: ["192.168.100.0/24"]
 
 punchy:
-  punch: true 
+  punch: true
   respond: true
 
 firewall:
   outbound: [{port: any, proto: any, host: any}]
   inbound: [{port: any, proto: any, host: any}]
+
